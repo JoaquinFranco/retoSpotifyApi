@@ -10,10 +10,9 @@ import { item as itemTrack } from '../models/tracks';
 export class SpotifyService {
   constructor(private _http: HttpClient) {}
   public res: any = {};
-  TOKEN: string =
-    'BQCxbH7vwy3jgBfXixRs1LHrVPFDwi0InZJTH2HhCMrM3Vv2363_Y7p5tTLClKZNYcDeEWLaN2BQEMQHhBQmyTAPX78BIh5BENj5CN0p92Ks35NRXsU';
+  TOKEN: string = 'xxx';
   public albumListFilled: boolean = false;
-  public albumList: item[] = [];
+  public albumList: Item[] = [];
   public trackList: itemTrack[] = [];
   public albumIndex: number = 0;
   public nextAlbumUrl?: string;

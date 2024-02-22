@@ -1,0 +1,28 @@
+<div class="row justify-content-center mt-5" *ngIf="spotifyServices.trackList">
+  <app-album-play-list-card />
+  <div
+    class="list-group col-md-11 row mt-4 mb-4"
+    style="overflow: hidden"
+    infinite-scroll
+    [infiniteScrollDistance]="1"
+    [infiniteScrollUpDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScrollDown()"
+  >
+    @for (track of spotifyServices.trackList; track track.name) {
+    <div class="list-group-item list-group-item-action">
+      <div class="row">
+        <div class="col-md-6">{{ track.name }}</div>
+        <audio class="col-md-6 text-end" controls="controls">
+          <source [src]="track.preview_url" type="audio/mpeg" />
+        </audio>
+      </div>
+    </div>
+    }@empty {
+    <span>noResults</span>
+    }
+  </div>
+  <div class="col-md-1">
+    <app-scroll-buttons />
+  </div>
+</div>

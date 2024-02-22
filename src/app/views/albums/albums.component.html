@@ -1,0 +1,30 @@
+<div class="row justify-content-center mt-5" *ngIf="spotifyServices.albumList">
+  <div
+    class="col-md-11 row"
+    style="overflow: hidden"
+    infinite-scroll
+    [infiniteScrollDistance]="1"
+    [infiniteScrollUpDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScrollDown()"
+  >
+    @for (album of spotifyServices.albumList; track album.name; let i = $index)
+    {
+    <div class="card col-2 mt-4 mx-2" (click)="toAlbum(album.href, i)">
+      <img
+        class="card-img-top"
+        [src]="album.images[0].url"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <p class="card-text">{{ album.name }}</p>
+      </div>
+    </div>
+    }@empty {
+    <span>noResults</span>
+    }
+  </div>
+  <div class="col-md-1">
+    <app-scroll-buttons />
+  </div>
+</div>

@@ -1,22 +1,25 @@
-import { Component } from '@angular/core';
-import { item } from '../../models/albums';
+import { AsyncPipe, CommonModule } from '@angular/common';
+import { Component, inject, signal } from '@angular/core';
+import { Item } from '../../models/albums';
 import { SpotifyService } from '../../services/spotify-service.service';
 
 @Component({
   selector: 'app-album-play-list-card',
   standalone: true,
-  imports: [],
+  imports: [AsyncPipe, CommonModule],
   templateUrl: './album-play-list-card.component.html',
   styleUrl: './album-play-list-card.component.css',
 })
 export class AlbumPlayListCardComponent {
-  album!: item;
+  spotifyServices = inject(SpotifyService);
+  album = signal<Item | null>(null);
 
-  constructor(public spotifyServices: SpotifyService) {}
+  aux$ = this.spotifyServices.getAlbums();
 
   ngOnInit(): void {
-    this.album =
-      this.spotifyServices.albumList[this.spotifyServices.albumIndex];
+    this.album.set(
+      this.spotifyServices.albumList[this.spotifyServices.albumIndex]
+    );
   }
 
   volver() {

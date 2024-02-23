@@ -25,7 +25,7 @@ export class AppComponent {
   constructor(public spotifyServices: SpotifyService) {}
   search($event: string) {
     this.spotifyServices.showPlaylist = false;
-    new AlbumsComponent(this.spotifyServices).getAlbums($event, true);
+    new AlbumsComponent().getAlbums($event, true);
     //viewchild
   }
 }

@@ -21,12 +21,4 @@ export class AlbumPlayListComponent {
   constructor(public spotifyServices: SpotifyService) {}
 
   onScrollDown() {}
-
-  topScroll() {
-    window.scrollTo(0, 0);
-  }
-
-  downScroll() {
-    window.scrollTo(0, document.body.scrollHeight);
-  }
 }

@@ -1,8 +1,8 @@
-import { artist, image } from './albums';
+import { Artist, Image } from './albums';
 
 export interface Tracks {
   href: string;
-  items: item[];
+  items: Item[];
   limit: number;
   next?: string;
   offset: number;
@@ -10,8 +10,8 @@ export interface Tracks {
   total: number;
 }
 
-export interface item {
-  artists: artist[];
+export interface Item {
+  artists: Artist[];
   disc_number: number;
   duration_ms: number;
   explicit: boolean;
@@ -23,7 +23,7 @@ export interface item {
   track_number: number;
   type: string;
   uri: string;
-  images: image[];
+  images: Image[];
   external_urls: {
     spotify: string;
   };

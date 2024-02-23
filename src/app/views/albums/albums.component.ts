@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { Tracks } from '../../models/tracks';
 import { SpotifyService } from '../../services/spotify-service.service';
@@ -13,7 +13,7 @@ import { ScrollButtonsComponent } from '../scroll-buttons/scroll-buttons.compone
   imports: [CommonModule, InfiniteScrollModule, ScrollButtonsComponent],
 })
 export class AlbumsComponent implements OnInit {
-  constructor(public spotifyServices: SpotifyService) {}
+  spotifyServices = inject(SpotifyService);
 
   ngOnInit(): void {
     if (!this.spotifyServices.albumListFilled) {

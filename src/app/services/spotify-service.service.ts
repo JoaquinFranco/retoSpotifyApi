@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Albums, item } from '../models/albums';
-import { item as itemTrack } from '../models/tracks';
+import { TOKEN } from '../../assets/claves.json';
+import { Albums, Item } from '../models/albums';
+import { Item as itemTrack } from '../models/tracks';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,6 @@ import { item as itemTrack } from '../models/tracks';
 export class SpotifyService {
   constructor(private _http: HttpClient) {}
   public res: any = {};
-  TOKEN: string = 'xxx';
   public albumListFilled: boolean = false;
   public albumList: Item[] = [];
   public trackList: itemTrack[] = [];
@@ -23,7 +23,7 @@ export class SpotifyService {
       link = 'https://api.spotify.com/v1/search?q=default&type=album';
     }
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.TOKEN}`,
+      Authorization: `Bearer ${TOKEN}`,
     });
     if (url) {
       link = url;
@@ -31,10 +31,10 @@ export class SpotifyService {
     return this._http.get<Albums>(link, { headers });
   }
 
-  getTracks(url: string): Observable<item> {
+  getTracks(url: string): Observable<Item> {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.TOKEN}`,
+      Authorization: `Bearer ${TOKEN}`,
     });
-    return this._http.get<item>(url, { headers });
+    return this._http.get<Item>(url, { headers });
   }
 }

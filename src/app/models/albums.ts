@@ -3,7 +3,7 @@ import { Tracks } from './tracks';
 export interface Albums {
   albums: {
     href: string;
-    items: item[];
+    items: Item[];
     limit: number;
     next?: string;
     offset: number;
@@ -12,10 +12,10 @@ export interface Albums {
   };
 }
 
-export interface item {
+export interface Item {
   album_type: string;
   name: string;
-  artists: artist[];
+  artists: Artist[];
   href: string;
   id: string;
   release_date: string;
@@ -23,11 +23,11 @@ export interface item {
   total_tracks: number;
   type: string;
   uri: string;
-  images: image[];
+  images: Image[];
   tracks?: Tracks;
 }
 
-export interface artist {
+export interface Artist {
   href: string;
   id: string;
   name: string;
@@ -35,7 +35,7 @@ export interface artist {
   uri: string;
 }
 
-export interface image {
+export interface Image {
   height: number;
   url: string;
   width: number;

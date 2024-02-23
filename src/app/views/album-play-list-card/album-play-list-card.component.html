@@ -2,19 +2,19 @@
   <div class="row g-0">
     <div class="col-md-3">
       <img
-        [src]="album.images[0].url"
+        [src]="album()!.images[0].url"
         class="img-fluid rounded-start my-2"
-        [alt]="album.images[0].url"
+        [alt]="album()!.images[0].url"
       />
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{ album.name }}</h5>
+        <h5 class="card-title">{{ album()!.name }}</h5>
         <div class="row">
           <span class="col-md-3">Artist</span>
-          <span class="col-md-9">{{ album.artists[0].name }}</span>
+          <span class="col-md-9">{{ album()!.artists[0].name }}</span>
           <span class="col-md-3">Release date</span>
-          <span class="col-md-9">{{ album.release_date }}</span>
+          <span class="col-md-9">{{ album()!.release_date }}</span>
         </div>
       </div>
     </div>
@@ -24,4 +24,7 @@
       </button>
     </div>
   </div>
+</div>
+<div *ngIf="aux$ | async as album">
+  {{ album.albums.href }}
 </div>
